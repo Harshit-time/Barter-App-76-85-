@@ -1,21 +1,23 @@
-
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import {createAppContainer,createSwitchNavigator} from 'react-navigation';
+
 import SignUpLoginScreen from './screens/SignUpLoginScreen';
+import{AppTabNavigator} from './components/AppTabNavigator';
+
+
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <SignUpLoginScreen />
-    </View>
+    
+      <AppContainer />
+
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const switchNavigator = createSwitchNavigator({
+  SignUpLoginScreen:{screen:SignUpLoginScreen},
+  BottomTab : {screen:AppTabNavigator}
+})
+
+const AppContainer = createAppContainer(switchNavigator);
